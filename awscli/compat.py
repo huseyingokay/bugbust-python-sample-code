@@ -339,9 +339,7 @@ def ignore_user_entered_signals():
         signal_list = [signal.SIGINT]
     else:
         signal_list = [signal.SIGINT, signal.SIGQUIT, signal.SIGTSTP]
-    actual_signals = []
-    for user_signal in signal_list:
-        actual_signals.append(signal.signal(user_signal, signal.SIG_IGN))
+    actual_signals = [signal.signal(user_signal, signal.SIG_IGN) for user_signal in signal_list]
     try:
         yield
     finally:
