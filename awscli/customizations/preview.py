@@ -102,11 +102,8 @@ def _get_allowed_services(session):
     # For a service to be marked as preview, it must be in the
     # [preview] section and it must have a value of 'true'
     # (case insensitive).
-    allowed = []
     preview_services = session.full_config.get('preview', {})
-    for preview, value in preview_services.items():
-        if value == 'true':
-            allowed.append(preview)
+    allowed = [preview for preview, value in preview_services.items() if value == 'true']
     return allowed
 
 
