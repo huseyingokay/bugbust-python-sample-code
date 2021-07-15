@@ -99,9 +99,7 @@ class MockDigestProvider(object):
         self.logs = logs or []
         self.actions = actions
         self.calls = {'fetch_digest': [], 'load_digest_keys_in_range': []}
-        self.digests = []
-        for i in range(len(self.actions)):
-            self.digests.append(self.get_key_at_position(i))
+        self.digests = [self.get_key_at_position(x) for x in range(len(self.actions))]
 
     def get_key_at_position(self, position):
         dt = START_DATE + timedelta(hours=position)
