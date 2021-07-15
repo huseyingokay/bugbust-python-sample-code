@@ -813,8 +813,10 @@ class TestCreateCluster(BaseAWSCommandParamsTest):
     def test_bootstrap_actions_exceed_maximum_error(self):
         cmd = DEFAULT_CMD + ' --bootstrap-actions'
         ba_cmd = ' Path=s3://test/ba1,Name=ba1,Args=arg1,arg2,arg3'
+        ba_cmd_list = []
         for i in range(1, 18):
-            cmd += ba_cmd
+            ba_cmd_list.append(ba_cmd)
+        cmd += str.join(ba_cmd_list)
 
         expected_error_msg = '\naws: error: maximum number of ' +\
                              'bootstrap actions for a cluster exceeded.\n'
