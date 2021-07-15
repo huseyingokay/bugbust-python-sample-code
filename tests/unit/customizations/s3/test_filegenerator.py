@@ -616,8 +616,8 @@ class S3FileGeneratorTest(BaseAWSCommandParamsTest):
         self.patch_make_request()
         files = FileGenerator(self.client, 'delete').call(input_s3_file)
         result_list = []
-        for filename in files:
-            result_list.append(filename)
+
+        result_list = [filename for filename in files]
 
         file_stat1 = FileStat(src=self.bucket + '/another_directory/',
                               dest='another_directory' + os.sep,
