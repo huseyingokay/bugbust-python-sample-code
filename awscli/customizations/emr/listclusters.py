@@ -47,7 +47,7 @@ class ClusterStatesArgument(CustomArgument):
     def add_to_params(self, parameters, value):
         if value is not None:
             if (parameters.get('ClusterStates') is not None and
-                    len(parameters.get('ClusterStates')) > 0):
+                    parameters.get('ClusterStates') is not None):
                 raise exceptions.ClusterStatesFilterValidationError()
             parameters['ClusterStates'] = value
 
