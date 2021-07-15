@@ -212,7 +212,7 @@ def ensure_paging_params_not_set(parsed_args, shadowed_args):
     params_used = [p for p in paging_params if
                    p not in shadowed_params and getattr(parsed_args, p, None)]
 
-    if len(params_used) > 0:
+    if params_used is not None: 
         converted_params = ', '.join(
             ["--" + p.replace('_', '-') for p in params_used])
         raise PaginationError(
