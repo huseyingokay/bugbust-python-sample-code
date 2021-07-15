@@ -56,7 +56,7 @@ class ActiveStateArgument(CustomArgument):
     def add_to_params(self, parameters, value):
         if value is True:
             if (parameters.get('ClusterStates') is not None and
-                    len(parameters.get('ClusterStates')) > 0):
+                    parameters.get('ClusterStates') is not None):
                 raise exceptions.ClusterStatesFilterValidationError()
             parameters['ClusterStates'] = constants.LIST_CLUSTERS_ACTIVE_STATES
 
