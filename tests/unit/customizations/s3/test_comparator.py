@@ -160,7 +160,6 @@ class ComparatorTest(unittest.TestCase):
         src_files = []
         dest_files = []
         ref_list = []
-        result_list = []
         time = datetime.datetime.now()
         dest_file = FileStat(src='', dest='',
                              compare_key='comparator_test.py', size=10,
@@ -169,8 +168,7 @@ class ComparatorTest(unittest.TestCase):
         dest_files.append(dest_file)
         ref_list.append(dest_file)
         files = self.comparator.call(iter(src_files), iter(dest_files))
-        for filename in files:
-            result_list.append(filename)
+        result_list = [filename for filename in files]
         self.assertEqual(result_list, ref_list)
 
         # Now try when the sync strategy says not to sync the file.
