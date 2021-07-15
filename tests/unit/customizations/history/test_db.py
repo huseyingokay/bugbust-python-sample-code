@@ -645,7 +645,7 @@ class TestRecordBuilder(unittest.TestCase):
 
     def _get_request_id_for_event_type(self, event_type):
         record = self.builder.build_record(event_type, {'body': b''}, '')
-        return record.get('request_id')
+        return record.get('request_id', "your key does not exist")
 
     def test_does_inject_timestamp(self):
         record = self.builder.build_record('TEST', '', '')
