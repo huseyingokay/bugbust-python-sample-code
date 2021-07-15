@@ -135,9 +135,7 @@ class LocalFileGeneratorTest(unittest.TestCase):
                            'dir_op': True, 'use_src_name': True}
         params = {'region': 'us-east-1'}
         files = FileGenerator(self.client, '').call(input_local_dir)
-        result_list = []
-        for filename in files:
-            result_list.append(filename)
+        result_list = [filename for filename in files]
         size, last_update = get_file_stat(self.local_file)
         file_stat = FileStat(src=self.local_file, dest='bucket/text1.txt',
                              compare_key='text1.txt', size=size,
